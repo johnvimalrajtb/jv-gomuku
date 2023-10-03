@@ -3,7 +3,7 @@
 
 ## Start the applications
 
-1. The full stack app - `jv-gomuku-react` and `jv-gomuku-service`:
+1. The full stack app - `jv-gomuku-app` and `jv-gomuku-service`:
    - at the root directory (you should see `docker-compose.yml` file)
    - run `docker-compose up`
      - if dependencies change, run `docker-compose up --build` to rebuild images

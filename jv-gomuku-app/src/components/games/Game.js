@@ -1,7 +1,7 @@
 import { BOARD_SIZE } from "./consts";
 import { checkWin } from "./utils";
-
 import React from "react";
+import { saveGame  } from "../../helpers/http";
 
 class Game extends React.Component {
   constructor(props) {
@@ -149,7 +149,7 @@ class Game extends React.Component {
         area: this.state.area,
       };
       console.log(JSON.stringify([historyData]));
-      let history = localStorage.getItem("history");
+     /* let history = localStorage.getItem("history");
       if (history == null) {
         localStorage.setItem("history", JSON.stringify([historyData]));
       } else {
@@ -159,7 +159,8 @@ class Game extends React.Component {
           "history",
           JSON.stringify(items.concat([historyData]))
         );
-      }
+      }*/
+      saveGame(historyData);
     }
     window.location = "games";
   }

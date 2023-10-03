@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-WORKDIR /gomuku-react
+WORKDIR /jv-gomuku-app
 
 ADD ./package.json ./
 ADD ./yarn.lock ./

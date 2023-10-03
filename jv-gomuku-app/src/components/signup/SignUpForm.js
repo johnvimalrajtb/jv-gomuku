@@ -78,8 +78,7 @@ class SignUpForm extends React.Component {
   };
 }
 
-SignUpForm.propTypes = {
-  login: PropTypes.func.isRequired
+SignUpForm.contextTypes = {
+  auth: PropTypes.object
 }
-
 export default SignUpForm

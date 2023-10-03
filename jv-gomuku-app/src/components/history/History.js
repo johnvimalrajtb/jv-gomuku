@@ -1,4 +1,5 @@
 import React from "react";
+import { getGameHistory  } from "../../helpers/http";
 
 class History extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class History extends React.Component {
   }
 
   init() {
-    this.gameList(this.state.history);
+    this.gameList(getGameHistory());
   }
 
   gameList(history) {

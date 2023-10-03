@@ -12,10 +12,9 @@ class LoginPage extends React.Component {
     this.loginToApi = this.loginToApi.bind(this)
   }
 
-  loginToApi (username, password) {
-    return this.props.login(username, password)
-               .then(() => this.setState({ redirectToReferrer: true }))
-               
+  async loginToApi (username, password) {
+    return await this.props.login(username, password)
+               .then(() => this.setState({ redirectToReferrer: true }))            
   }
 
   render () {

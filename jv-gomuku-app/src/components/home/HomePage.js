@@ -21,9 +21,8 @@ const HomePage = () => {
 
        Select Board Size?
 
-       <select  onChange={handleChange}>
-            {Array(maxBoardSize).fill(1,5,20).map((el, i) =>
-              
+       <select onChange={handleChange}>
+            {Array(maxBoardSize).fill(1,5,20).map((el, i) =>             
               <option value={i}>{i}</option>
             )}
           </select>

@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SignUpForm from './SignUpForm'
+import { Redirect } from 'react-router'
+import { register } from '../../services/authentication'
 
 class SignUpPage extends React.Component {
   constructor (props) {
@@ -11,8 +13,8 @@ class SignUpPage extends React.Component {
     this.registerToApi = this.registerToApi.bind(this)
   }
 
-  registerToApi (username, password) {
-    return this.props.login(username, password)
+  async registerToApi (username, password) {
+    return await register(username, password)
                .then(() => this.setState({ redirectToReferrer: true }))              
   }
 
@@ -20,8 +22,25 @@ class SignUpPage extends React.Component {
     const { from } = this.props.location.state || '/'
     const { redirectToReferrer } = this.state
     return (     
-
-          <SignUpForm register={this.registerToApi} />
+      <div>
+      {redirectToReferrer && (
+        <Redirect to={from || '/login'} />
+      )}
+      {from && (
+        <p>
+          You gotta log in if you want to see
+          <code>{from.pathname}</code>
+        </p>
+      )}
+      {this.context.auth.loggedIn ? (
+        <p>
+          You're already logged in.
+        </p>
+      ) : (
+        <SignUpForm register={this.registerToApi} />
+      )}
+    </div>
+          
          
     )
   };
@@ -29,10 +48,6 @@ class SignUpPage extends React.Component {
 
 SignUpPage.contextTypes = {
   auth: PropTypes.object
-}
-
-SignUpPage.propTypes = {
-  login: PropTypes.func
 }
 
 export default SignUpPage

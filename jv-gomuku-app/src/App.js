@@ -36,6 +36,7 @@ class App extends React.Component {
     }
 
     this.login = this.login.bind(this)
+    this.register = this.register.bind(this)
     this.logout = this.logout.bind(this)
   }
 
@@ -48,6 +49,21 @@ class App extends React.Component {
         role: this.state.auth.role
       }
     }
+  }
+
+  register (username, password) {
+    return authentication.register(username, password)
+    .then(result => {
+      this.setState({
+        auth: {
+          ...this.state.auth,
+          loggedIn: false,
+          username: '',
+          userToken: '',
+          role: ''
+        }
+      })
+    })
   }
 
   login (username, password) {
@@ -84,7 +100,7 @@ class App extends React.Component {
             <Switch>
               <Route path='/' exact component={HomePage} />
               <Route path='/about' component={AboutPage} />
-              <Route path="/signup" component={SignUpPage} />
+              <Route path="/signup" component={SignUpPage} props={{ register: this.register }}/>
               <RouteWithProps path='/login' component={LoginPage} props={{ login: this.login }} />
               <RouteWithProps path='/notloggedin' component={LoginPage} props={{ login: this.login }} />
               <PrivateRoute path='/game' component={GamesPage} />

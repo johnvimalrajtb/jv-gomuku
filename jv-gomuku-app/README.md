@@ -1,4 +1,4 @@
-# gomuku-react
+# jv-gomuku-app
 ## Basic wep applciation with login 
 ### Routers
 - Home
@@ -34,6 +34,6 @@ Board Size can be modified In the home page from the select form 5 -19
 
 ###Game
 
-![alt text](https://github.com/johnvimalrajtb/gomuku-react/blob/main/public/Game.png?raw=true)
-![alt text](https://github.com/johnvimalrajtb/gomuku-react/blob/main/public/Game-History.png?raw=true)
-![alt text](https://github.com/johnvimalrajtb/gomuku-react/blob/main/public/Previous-game-2.png?raw=true)
+![alt text](https://github.com/johnvimalrajtb/jv-gomuku-app/blob/main/public/Game.png?raw=true)
+![alt text](https://github.com/johnvimalrajtb/jv-gomuku-app/blob/main/public/Game-History.png?raw=true)
+![alt text](https://github.com/johnvimalrajtb/jv-gomuku-app/blob/main/public/Previous-game-2.png?raw=true)
