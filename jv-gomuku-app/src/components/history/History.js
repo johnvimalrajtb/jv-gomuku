@@ -1,17 +1,18 @@
 import React from "react";
-import { getGameHistory  } from "../../helpers/http";
+import { getGameHistory } from "../../helpers/http";
 
 class History extends React.Component {
   constructor(props) {
     super(props);
+    let history = null;
     this.state = {
-      history: [{}],
+      history: history,
     };
   }
 
-  init() {
+  async init() {
     //set state to history
-    this.setState({ history: getGameHistory() });
+    this.setState({ history: await getGameHistory() });
   }
 
   gameList(history) {
@@ -25,8 +26,8 @@ class History extends React.Component {
     return history;
   }
 
-  componentDidMount() {
-    this.init();
+  async componentDidMount() {
+    await this.init();
   }
   /**
    * 
@@ -51,7 +52,7 @@ class History extends React.Component {
     if (history == null) {
       return emptyMessage;
     } else {
-      let items = Array.from(JSON.parse(history));
+      let items = history;
       return (
         <div className="game" id="history">
           <div className="App">
@@ -71,7 +72,7 @@ class History extends React.Component {
                     <td>{val.winner}</td>
                     <td>{val.boardSize}</td>
                     <td>
-                    <a href={'/game-log/'+val.gameId}> View game log</a>
+                      <a href={"/game-log/" + val.gameId}> View game log</a>
                       {/* <button className="leaveGame" id="leaveGame" 
                       onClick={this.openGameLog(val.gameId)}>
                       View game log

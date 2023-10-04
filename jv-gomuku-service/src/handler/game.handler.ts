@@ -26,7 +26,7 @@ gameHandler.post(
         boardSize: gameData.boardSize,
         board: gameData.board,
         winner: gameData.winner,
-        createdAt: new Date()
+        date: new Date()
       })
      
       res.status(201).json({ _id: newGame._id })

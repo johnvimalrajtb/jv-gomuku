@@ -17,6 +17,7 @@ services:
     build: ./jv-gomuku-service
     environment:
       - dbURI=mongodb://mongo-db:27017
+      - allowHost=http://localhost:3000
     volumes:
       - ./jv-gomuku-service/src:/jv-gomuku-service/src
     ports:

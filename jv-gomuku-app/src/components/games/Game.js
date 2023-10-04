@@ -146,7 +146,7 @@ class Game extends React.Component {
         winner: this.state.gameState,
         date: new Date().toLocaleString(),
         boardSize: this.state.boardSize,
-        area: this.state.area,
+        board: this.state.area,
       };
       console.log(JSON.stringify([historyData]));
      /* let history = localStorage.getItem("history");

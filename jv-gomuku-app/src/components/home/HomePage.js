@@ -23,7 +23,7 @@ const HomePage = () => {
 
        <select onChange={handleChange}>
             {Array(maxBoardSize).fill(1,5,20).map((el, i) =>             
-              <option value={i}>{i}</option>
+              <option value={i} >{i}*{i}</option>
             )}
           </select>
           <div className="flex-container">

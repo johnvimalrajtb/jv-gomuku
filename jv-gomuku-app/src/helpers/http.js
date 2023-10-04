@@ -31,7 +31,7 @@ export async function getGameHistory() {
 
 export async function getGameById(id) {
   try {
-    const game = await get(`${API_HOST}/api/game/retrieve/:${id}`,{})
+    const game = await get(`${API_HOST}/api/game/retrieve/${id}`,{})
     return Promise.resolve(game);
   } catch (error) {
     if (error instanceof Error) {

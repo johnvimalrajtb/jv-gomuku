@@ -7,8 +7,14 @@ class GameRO extends React.Component {
 
     const gameId = props.id;
     console.log(gameId);
-  
-    let historyData = getGameById(gameId);
+    this.state = {"gameId": gameId};
+    // functions
+    this.init = this.init.bind(this);
+  }
+
+  async init() {
+
+    let historyData = await getGameById(this.state.gameId);
     console.log(JSON.stringify(historyData));
     if (historyData === undefined) {
       this.setState({});
@@ -19,15 +25,11 @@ class GameRO extends React.Component {
         gameOver: true,
         gameState: historyData.winner,
         currValue: -1, // black - O, white - 1
-        area: historyData.area,
+        area: historyData.board,
         boardSize: historyData.boardSize,
       };
     }
-    // functions
-    this.init = this.init.bind(this);
-  }
 
-  init() {
     let board = document.getElementById("goBoard");
     board.className = "board";
     board.id = "board";
@@ -67,9 +69,9 @@ class GameRO extends React.Component {
     }
   }
 
-  componentDidMount() {
-    if(this.state  && this.state.boardSize){
-      this.init();
+  async componentDidMount() {
+    if(this.state.gameId != null){
+      await this.init();
     }
     let backButton = document.getElementById("back");
     if (backButton != null)
@@ -80,9 +82,6 @@ class GameRO extends React.Component {
       window.location = "/games";
   }
   render() {
-    if(!this.state || !this.state.boardSize){
-      return (<div className="game" id="history">Incorrect game id</div>);
-    }
     return (
       <div className="game">
         <div className="messages">
