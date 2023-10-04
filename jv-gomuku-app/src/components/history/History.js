@@ -10,7 +10,8 @@ class History extends React.Component {
   }
 
   init() {
-    this.gameList(getGameHistory());
+    //set state to history
+    this.setState({ history: getGameHistory() });
   }
 
   gameList(history) {
@@ -19,7 +20,7 @@ class History extends React.Component {
       console.log(history[i].winner);
       console.log(history[i].date);
       console.log(history[i].boardSize);
-      console.log(history[i].area);
+      console.log(history[i].board);
     }
     return history;
   }
@@ -46,7 +47,7 @@ class History extends React.Component {
    */
   render() {
     const emptyMessage = <p>There are no previous games played yet.</p>;
-    let history = localStorage.getItem("history");
+    let history = this.state.history;
     if (history == null) {
       return emptyMessage;
     } else {

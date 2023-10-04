@@ -1,4 +1,5 @@
 import React from "react";
+import { getGameById  } from "../../helpers/http";
 
 class GameRO extends React.Component {
   constructor(props) {
@@ -6,13 +7,9 @@ class GameRO extends React.Component {
 
     const gameId = props.id;
     console.log(gameId);
-    // initiate area'
-    // gameId
-    //let gameId = params.gameId;
-    let history = Array.from(JSON.parse(localStorage.getItem("history")));
-    console.log(JSON.stringify(history));
-    let historyData = history[gameId - 1];
-    
+  
+    let historyData = getGameById(gameId);
+    console.log(JSON.stringify(historyData));
     if (historyData === undefined) {
       this.setState({});
     } else {

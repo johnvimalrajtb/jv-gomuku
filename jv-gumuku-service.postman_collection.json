@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "da69f5ab-8e97-4350-961a-5dc1dd3d397a",
+		"name": "jv-gumuku-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2238149"
+	},
+	"item": [
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var token = pm.response.json().token;\r",
+							"pm.collectionVariables.set(\"jv-access-token\", token); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"john1\",\r\n    \"password\": \"vimalraj\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var token = pm.response.json().token;\r",
+							"pm.collectionVariables.set(\"jv-access-token\", token); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRzZ2ZkZ2RmIiwiX2lkIjoiNjUxYWE5ODE4ZGJkYTlmNjljMjM2NjNhIiwiaWF0IjoxNjk2MjQ2MTQ2LCJleHAiOjE2OTYyNzQ5NDZ9.Ur7QO99asMG8l72yENfAbF_XmlHr-cwbb0rXeCFArMI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"john1\",\r\n    \"password\": \"vimalraj\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Game",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jv-access-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"winner\": \"Black Wins\",\r\n    \"boardSize\": \"8\",\r\n    \"board\": [\r\n        [\r\n            1,\r\n            1,\r\n            0,\r\n            0,\r\n            0,\r\n            0,\r\n            0\r\n        ],\r\n        [\r\n            0,\r\n            1,\r\n            -1,\r\n            0,\r\n            0,\r\n            0,\r\n            0\r\n        ],\r\n        [\r\n            0,\r\n            0,\r\n            1,\r\n            -1,\r\n            0,\r\n            0,\r\n            0\r\n        ],\r\n        [\r\n            0,\r\n            0,\r\n            0,\r\n            1,\r\n            -1,\r\n            0,\r\n            0\r\n        ],\r\n        [\r\n            0,\r\n            0,\r\n            0,\r\n            0,\r\n            1,\r\n            -1,\r\n            0\r\n        ],\r\n        [\r\n            0,\r\n            0,\r\n            0,\r\n            0,\r\n            0,\r\n            -1,\r\n            0\r\n        ],\r\n        [\r\n            0,\r\n            0,\r\n            0,\r\n            0,\r\n            0,\r\n            0,\r\n            0\r\n        ]\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/game/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"game",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Game History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRzZ2ZkZ2RmIiwiX2lkIjoiNjUxYmVmM2E4YWRiMmFkMjVlYjhkMjhlIiwiaWF0IjoxNjk2MzI5NzMyLCJleHAiOjE2OTYzNTg1MzJ9.Wi7qHgd5vL1X0pcqtqWUX5OB_VrSpxr21F3kTycCGqg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/game/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"game",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Game By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRzZ2ZkZ2RmIiwiX2lkIjoiNjUxYmVmM2E4YWRiMmFkMjVlYjhkMjhlIiwiaWF0IjoxNjk2MzI5NzMyLCJleHAiOjE2OTYzNTg1MzJ9.Wi7qHgd5vL1X0pcqtqWUX5OB_VrSpxr21F3kTycCGqg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/game/retrieve/62f875f70860a1d7140f99d1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"game",
+						"retrieve",
+						"62f875f70860a1d7140f99d1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "jv-access-token",
+			"value": ""
+		}
+	]
+}

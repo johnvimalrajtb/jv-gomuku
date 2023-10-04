@@ -5,6 +5,10 @@ import UserModel from '../model/user.model'
 import SessionModel from '../model/session.model'
 import users from '../data/user.json'
 import sessions from '../data/sessions.json'
+import GameModel from '../model/game.model'
+import games from '../data/games.json'
+
+
 
 const run = async () => {
   try {
@@ -15,6 +19,9 @@ const run = async () => {
 
     await SessionModel.deleteMany()
     await SessionModel.insertMany(sessions)
+
+    await GameModel.deleteMany()
+    await GameModel.insertMany(games)
 
     console.log('Done')
     process.exit(0)

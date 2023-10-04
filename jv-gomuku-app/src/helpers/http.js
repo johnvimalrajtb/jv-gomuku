@@ -4,7 +4,7 @@ import { API_HOST } from "../constants"
 export async function saveGame(historyData) {
   //hardcoded user admin/admin
   try {
-    const game = await post(`${API_HOST}/api/game/save`, historyData)
+    const game = await post(`${API_HOST}/api/game/create`, historyData)
     return Promise.resolve({
       gameId: game.gameId
     });
@@ -19,10 +19,8 @@ export async function saveGame(historyData) {
 export async function getGameHistory() {
   //hardcoded user admin/admin
   try {
-    const game = await get(`${API_HOST}/api/game/history`,{})
-    return Promise.resolve({
-      gameId: game.gameId
-    });
+    const games = await get(`${API_HOST}/api/game/history`,{})
+    return Promise.resolve(games);
   } catch (error) {
     if (error instanceof Error) {
       throw error;
@@ -33,10 +31,8 @@ export async function getGameHistory() {
 
 export async function getGameById(id) {
   try {
-    const game = await get(`${API_HOST}/api/game/:${id}`,{})
-    return Promise.resolve({
-      gameId: game.gameId
-    });
+    const game = await get(`${API_HOST}/api/game/retrieve/:${id}`,{})
+    return Promise.resolve(game);
   } catch (error) {
     if (error instanceof Error) {
       throw error;
