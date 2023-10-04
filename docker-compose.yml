@@ -12,12 +12,12 @@ services:
       - ./jv-gomuku-app/src:/jv-gomuku-app/src
       - ./jv-gomuku-app/public:/jv-gomuku-app/public
     ports:
-      - 3000:3000
+      - 80:80
   server-app:
     build: ./jv-gomuku-service
     environment:
       - dbURI=mongodb://mongo-db:27017
-      - allowHost=http://localhost:3000
+      - allowHost=http://localhost:80
     volumes:
       - ./jv-gomuku-service/src:/jv-gomuku-service/src
     ports:
