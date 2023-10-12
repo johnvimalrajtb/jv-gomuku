@@ -1,5 +1,9 @@
 # jv-gomuku
-
+## Tech Stack
+  - TypeScript
+  - React JS
+  - Express JS
+  - Mongodb
 
 ## Start the applications
 
@@ -21,3 +25,5 @@ APIs
 - GET /api/games/history
 - POST /api/auth/register
 - POST /api/auth/login
+## Live Application
+- http://jv-une-gomuku.australiaeast.cloudapp.azure.com/
